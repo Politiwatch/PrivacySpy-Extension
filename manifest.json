@@ -1,21 +1,36 @@
 {
     "manifest_version": 2,
     "name": "PrivacySpy",
-    "version": "0.9",
+    "version": "1.0",
     "description": "PrivacySpy provides brief yet comprehensive privacy policy summaries and ratings.",
+    "homepage_url": "https://privacyspy.org",
     "icons": {
-        "48": "icons/PrivacySpy_48x48.png",
-        "96": "icons/PrivacySpy_96x96.png"
+        "48": "icons/privacyspy-48.png",
+        "96": "icons/privacyspy-96.png"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "js/borderify.js"
-            ]
-        }
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ],
+    "page_action": {
+        "browser_style": true,
+        "default_title": "PrivacySpy",
+        "default_popup": "popup/spy.html",
+        "default_icon": {
+            "19": "icons/privacyspy-19.png",
+            "38": "icons/privacyspy-38.png"
+        },
+        "show_matches": [
+            "<all_urls>"
+        ]
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "web_accessible_resources": [
+        "icons/privacyspy-96.png"
     ],
     "applications": {
         "gecko": {
