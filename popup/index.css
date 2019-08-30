@@ -1,0 +1,57 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html, body {
+    font-family: 'Inter', sans-serif;
+    max-width: 300px;
+    text-align: center;
+}
+
+@supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+}
+
+hr {
+    display: block;
+    color: #ffffff;
+}
+
+#popup-content {
+    margin: 0 auto;
+}
+
+#header {
+    text-align: center;
+}
+
+#privacyspy-logo {
+    width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#privacyspy-text {
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#privacyspy-version {
+    color: #b5b5b5;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.yellow-score {
+    color: #ebbc00;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 150%;
+    color: #363636;
+}
+
+.subtitle {
+    color: #4a4a4a;
+}
