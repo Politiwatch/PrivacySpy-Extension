@@ -2,8 +2,8 @@
 
 html, body {
     font-family: 'Inter', sans-serif;
-    max-width: 300px;
     text-align: center;
+    width: min-content;
 }
 
 @supports (font-variation-settings: normal) {
@@ -13,6 +13,9 @@ html, body {
 hr {
     display: block;
     color: #ffffff;
+    height: 2px;
+    background-color: whitesmoke;
+    border: 0;
 }
 
 #popup-content {
@@ -21,6 +24,7 @@ hr {
 
 #header {
     text-align: center;
+    border-radius: 4px;
 }
 
 #privacyspy-logo {
@@ -33,12 +37,76 @@ hr {
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
+    color: #363636;
+    font-size: 1rem;
 }
 
 #privacyspy-version {
     color: #b5b5b5;
     display: inline-block;
     vertical-align: middle;
+}
+
+#score {
+    font-size: 3rem;
+    margin: 0.25em;
+    display: block;
+}
+
+#service-name {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #363636;
+    margin: 0.5em 0 0.25em 0;
+}
+
+#service-domain {
+    margin: 0;
+    color: #b5b5b5;
+}
+
+#score-text {
+    font-weight: bold;
+    font-size: 125%;
+    color: #363636;
+    margin: 1em 0 0.25em 0;
+}
+
+#warnings {
+    color: #ff3860;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+.button {
+    background-color: transparent;
+    border-color: #3273dc;
+    color: #3273dc;
+    border: solid;
+    border-width: 1px;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    padding-top: calc(0.375em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 0.9rem;
+    height: 2.25em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    position: relative;
+    vertical-align: top;
+    text-decoration: none;
+    font-weight: 400;
 }
 
 .yellow-score {
