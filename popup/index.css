@@ -50,7 +50,6 @@ hr {
 #score {
     font-size: 3rem;
     margin: 0.25em;
-    display: block;
 }
 
 #service-name {
@@ -65,18 +64,34 @@ hr {
     color: #b5b5b5;
 }
 
-#score-text {
-    font-weight: bold;
-    font-size: 125%;
-    color: #363636;
-    margin: 1em 0 0.25em 0;
-}
-
 #warnings {
-    color: #ff3860;
     font-weight: bold;
     font-size: 1rem;
     margin: 0.5rem 0 0.75rem 0;
+}
+
+.red {
+    color: #ff3860;
+}
+
+.yellow {
+    color: #ebbc00;
+}
+
+.green {
+    color: #23d160;
+}
+
+.black {
+    color: #363636;
+}
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
 }
 
 .button {
@@ -107,10 +122,6 @@ hr {
     vertical-align: top;
     text-decoration: none;
     font-weight: 400;
-}
-
-.yellow-score {
-    color: #ebbc00;
 }
 
 .title {

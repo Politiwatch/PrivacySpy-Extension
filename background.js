@@ -86,6 +86,9 @@ function handleTabUpdate() {
                     lastHostname = hostname;
                     getHostnameInformation(hostname);
                 }
+            } else {
+                chrome.storage.local.set({ "current_product": { type: "empty" } });
+                chrome.browserAction.setBadgeText({ text: "" });
             }
         }
     });
@@ -102,8 +105,8 @@ function getHostnameInformation(hostname) {
     transaction.onerror = function () {
         parts = hostname.split('.')
         if (parts.length == 2) {
-            chrome.runtime.sendMessage({ type: "failure" });
-            console.log({ type: "failure" });
+            chrome.storage.local.set({ "current_product": { type: "failure" } });
+            chrome.browserAction.setBadgeText({ text: "" });
             return;
         }
         parts.shift();
@@ -117,14 +120,14 @@ function getHostnameInformation(hostname) {
     objectStore.get(hostname, { keyPath: "hostname" }).onsuccess = function (event) {
         if (event.target.result) {
             cache[hostname] = event.target.result;
-            chrome.runtime.sendMessage({ type: "success", result: event.target.result });
+            chrome.storage.local.set({ "current_product": { type: "success", result: event.target.result } });
             setBadgeRating(event.target.result.score, event.target.result.has_warnings_active);
             // chrome.browserAction.document.getElementById("service-name").innerText = event.target.result.name;
         } else {
             parts = hostname.split('.')
             if (parts.length == 2) {
-                chrome.runtime.sendMessage({ type: "failure" });
-                console.log({ type: "failure" });
+                chrome.storage.local.set({ "current_product": { type: "failure" } });
+                chrome.browserAction.setBadgeText({ text: "" });
                 return;
             }
             parts.shift();
