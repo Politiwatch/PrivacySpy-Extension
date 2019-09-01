@@ -81,7 +81,7 @@ function handleTabUpdate() {
 
 function getHostnameInformation(hostname) {
     if (cache[hostname] !== undefined) {
-        chrome.runtime.sendMessage({ type: "success", result: cache[hostname] });
+        chrome.storage.local.set({ "current_product": { type: "success", result: cache[hostname] } });
     }
     var transaction = db.transaction("products", "readwrite");
 
