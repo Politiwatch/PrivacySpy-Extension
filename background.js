@@ -1,8 +1,11 @@
 var BASE_URL = "https://privacyspy.org";
 
+if (typeof browser === 'undefined') {
+    var browser = chrome;
+}
+
 var db;
 
-var lastHostname = "";
 var cache = {};
 
 var request = window.indexedDB.open("ProductsDatabase", 1);
@@ -46,7 +49,19 @@ function getDomainName(url) {
 }
 
 function updateDatabase() {
-    var products = [];
+    browser.storage.local.get(['database_last_updated'], function (data) {
+        if (data.database_last_updated === undefined) {
+            downloadDatabase();
+        } else {
+            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24 * 2) {
+                downloadDatabase();
+            }
+        }
+    });
+}
+
+function downloadDatabase() {
+    browser.storage.local.set({ 'database_last_updated': Date.now() })
     fetch("https://privacyspy.org/api/retrieve_database")
         .then(response => {
             return response.json();
@@ -57,25 +72,23 @@ function updateDatabase() {
                 objectStore.add(product);
             });
         });
-    var objectStore = db.transaction("products", "readwrite").objectStore("products");
-    products.forEach(product => {
-        objectStore.add(product);
-    });
 }
 
 chrome.tabs.onUpdated.addListener(handleTabUpdate);
 chrome.tabs.onActivated.addListener(handleTabUpdate);
+chrome.tabs.onHighlighted.addListener(handleTabUpdate);
+chrome.tabs.onCreated.addListener(handleTabUpdate);
+chrome.tabs.onReplaced.addListener(handleTabUpdate);
+chrome.windows.onCreated.addListener(handleTabUpdate);
+chrome.windows.onFocusChanged.addListener(handleTabUpdate);
 
 function handleTabUpdate() {
-    chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs) {
+    chrome.tabs.query({ 'active': true, 'currentWindow': true }, function (tabs) {
         if (tabs[0] !== undefined) {
             var url = tabs[0].url;
             hostname = getDomainName(url);
             if (hostname) {
-                if (lastHostname !== hostname) {
-                    lastHostname = hostname;
-                    getHostnameInformation(hostname);
-                }
+                getHostnameInformation(hostname);
             } else {
                 browser.storage.local.set({ "current_product": { type: "empty" } });
                 chrome.browserAction.setBadgeText({ text: "" });

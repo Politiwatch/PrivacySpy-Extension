@@ -1,4 +1,27 @@
+if (typeof browser === 'undefined') {
+    browser = chrome;
+}
+
+browser.storage.local.get(['database_last_updated'], function (data) {
+    if (data.database_last_updated === undefined) {
+        document.getElementById("warnings").classList.add("black");
+        document.getElementById("warnings").classList.add("light-grey-background");
+        document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
+        document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
+        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+    }
+})
+
 browser.storage.local.get(['current_product'], function (data) {
+    if (data.current_product === undefined) {
+        document.getElementById("warnings").classList.add("black");
+        document.getElementById("warnings").classList.add("light-grey-background");
+        document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
+        document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
+        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+
+        return;
+    }
     if (data.current_product.type !== "success") {
         document.getElementById("see-breakdown").href = "https://privacyspy.org/";
         document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); }
