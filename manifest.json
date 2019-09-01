@@ -11,7 +11,8 @@
     "permissions": [
         "activeTab",
         "tabs",
-        "storage"
+        "storage",
+        "https://privacyspy.org/api"
     ],
     "browser_action": {
         "default_title": "PrivacySpy",
