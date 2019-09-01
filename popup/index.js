@@ -1,4 +1,4 @@
-chrome.storage.local.get(['current_product'], function (data) {
+browser.storage.local.get(['current_product'], function (data) {
     if (data.current_product.type !== "success") {
         document.getElementById("see-breakdown").href = "https://privacyspy.org/";
         document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); }

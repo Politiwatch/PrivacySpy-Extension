@@ -77,7 +77,7 @@ function handleTabUpdate() {
                     getHostnameInformation(hostname);
                 }
             } else {
-                chrome.storage.local.set({ "current_product": { type: "empty" } });
+                browser.storage.local.set({ "current_product": { type: "empty" } });
                 chrome.browserAction.setBadgeText({ text: "" });
             }
         }
@@ -86,14 +86,14 @@ function handleTabUpdate() {
 
 function getHostnameInformation(hostname) {
     if (cache[hostname] !== undefined) {
-        chrome.storage.local.set({ "current_product": { type: "success", result: cache[hostname] } });
+        browser.storage.local.set({ "current_product": { type: "success", result: cache[hostname] } });
     }
     var transaction = db.transaction("products", "readwrite");
 
     transaction.onerror = function () {
         parts = hostname.split('.')
         if (parts.length == 2) {
-            chrome.storage.local.set({ "current_product": { type: "failure" } });
+            browser.storage.local.set({ "current_product": { type: "failure" } });
             chrome.browserAction.setBadgeText({ text: "" });
             return;
         }
@@ -106,13 +106,13 @@ function getHostnameInformation(hostname) {
 
     objectStore.get(hostname, { keyPath: "hostname" }).onsuccess = function (event) {
         if (event.target.result) {
-            chrome.storage.local.set({ "current_product": { type: "success", result: event.target.result } });
+            browser.storage.local.set({ "current_product": { type: "success", result: event.target.result } });
             setBadgeRating(event.target.result.score, event.target.result.has_warnings_active);
             // chrome.browserAction.document.getElementById("service-name").innerText = event.target.result.name;
         } else {
             parts = hostname.split('.')
             if (parts.length == 2) {
-                chrome.storage.local.set({ "current_product": { type: "failure" } });
+                browser.storage.local.set({ "current_product": { type: "failure" } });
                 chrome.browserAction.setBadgeText({ text: "" });
                 return;
             }
