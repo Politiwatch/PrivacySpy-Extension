@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PrivacySpy",
     "version": "1.0",
-    "description": "PrivacySpy lets you know how the sites you visit handle your personal data. See privacy policies rated on a 10-point scale, as well as warnings when data breaches occur.",
+    "description": "PrivacySpy lets you know how the sites you visit handle your personal data. See privacy warnings and policies rated on a 10-point scale.",
     "homepage_url": "https://privacyspy.org",
     "icons": {
         "48": "icons/privacyspy-48.png",
