@@ -9,6 +9,7 @@ browser.storage.local.get(['database_last_updated'], function (data) {
         document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
         document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+        document.getElementById("score").classList.add("hidden");
     }
 })
 
@@ -19,6 +20,7 @@ browser.storage.local.get(['current_product'], function (data) {
         document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
         document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+        document.getElementById("score").classList.add("hidden");
 
         return;
     }

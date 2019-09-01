@@ -53,7 +53,7 @@ function updateDatabase() {
         if (data.database_last_updated === undefined) {
             downloadDatabase();
         } else {
-            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24 * 2) {
+            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24) {
                 downloadDatabase();
             }
         }
@@ -101,18 +101,31 @@ function getHostnameInformation(hostname) {
     if (cache[hostname] !== undefined) {
         browser.storage.local.set({ "current_product": { type: "success", result: cache[hostname] } });
     }
-    var transaction = db.transaction("products", "readwrite");
 
-    transaction.onerror = function () {
-        parts = hostname.split('.')
-        if (parts.length == 2) {
-            browser.storage.local.set({ "current_product": { type: "failure" } });
-            chrome.browserAction.setBadgeText({ text: "" });
-            return;
+    try {
+        var transaction = db.transaction("products", "readwrite");
+    } catch (e) {
+        console.log("Error when opening the database: " + e);
+        browser.storage.local.remove(['current_product', 'database_last_updated']);
+        return;
+    }
+
+    try {
+        transaction.onerror = function () {
+            parts = hostname.split('.')
+            if (parts.length == 2) {
+                browser.storage.local.set({ "current_product": { type: "failure" } });
+                chrome.browserAction.setBadgeText({ text: "" });
+                return;
+            }
+            parts.shift();
+            stripped_url = parts.join('.');
+            getHostnameInformation(stripped_url);
         }
-        parts.shift();
-        stripped_url = parts.join('.');
-        getHostnameInformation(stripped_url);
+    } catch (e) {
+        console.log("Error when opening the database: " + e);
+        browser.storage.local.remove(['current_product', 'database_last_updated']);
+        return;
     }
 
     objectStore = transaction.objectStore("products");
