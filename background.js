@@ -57,7 +57,6 @@ function updateDatabase() {
                 objectStore.add(product);
             });
         });
-
     var objectStore = db.transaction("products", "readwrite").objectStore("products");
     products.forEach(product => {
         objectStore.add(product);
