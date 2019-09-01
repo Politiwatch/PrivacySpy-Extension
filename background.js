@@ -55,21 +55,16 @@ function getDomainName(url) {
 
 function updateDatabase() {
     var products = JSON.parse('[{"name": "Firefox", "hostname": "mozilla.org", "slug": "firefox", "score": 7.83333333333333, "last_updated": "2019-08-28T03:24:56.625Z", "has_warnings_active": false}, {"name": "1Password", "hostname": "1password.com", "slug": "1password", "score": 8.61111111111111, "last_updated": "2019-08-27T21:56:47.801Z", "has_warnings_active": false}, {"name": "Amazon", "hostname": "amazon.com", "slug": "amazon", "score": 4.47058823529412, "last_updated": "2019-08-29T22:43:59.598Z", "has_warnings_active": false}, {"name": "PrivacySpy", "hostname": "privacyspy.org", "slug": "privacyspy", "score": 9.52941176470588, "last_updated": "2019-08-31T21:03:42.289Z", "has_warnings_active": false}, {"name": "Facebook", "hostname": "facebook.com", "slug": "facebook", "score": 3.41176470588235, "last_updated": "2019-08-31T19:48:45.367Z", "has_warnings_active": true}]');
-    // fetch("https://privacyspy.org/retrieve_database")
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then(products => {
-    //         var objectStore = db.transaction("products", "readwrite").objectStore("products");
-    //         products.forEach(product => {
-    //             objectStore.add(product);
-    //         });
-    //     });
-
-    var objectStore = db.transaction("products", "readwrite").objectStore("products");
-    products.forEach(product => {
-        objectStore.add(product);
-    });
+    fetch("https://privacyspy.org/retrieve_database")
+        .then(response => {
+            return response.json();
+        })
+        .then(products => {
+            var objectStore = db.transaction("products", "readwrite").objectStore("products");
+            products.forEach(product => {
+                objectStore.add(product);
+            });
+        });
 }
 
 chrome.tabs.onUpdated.addListener(handleTabUpdate);
