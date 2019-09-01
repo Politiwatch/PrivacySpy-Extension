@@ -12,7 +12,7 @@
         "activeTab",
         "tabs",
         "storage",
-        "https://privacyspy.org/api"
+        "https://privacyspy.org/"
     ],
     "browser_action": {
         "default_title": "PrivacySpy",

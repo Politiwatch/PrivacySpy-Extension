@@ -46,6 +46,7 @@ function getDomainName(url) {
 }
 
 function updateDatabase() {
+    var products = [];
     fetch("https://privacyspy.org/api/retrieve_database")
         .then(response => {
             return response.json();
@@ -56,6 +57,10 @@ function updateDatabase() {
                 objectStore.add(product);
             });
         });
+    var objectStore = db.transaction("products", "readwrite").objectStore("products");
+    products.forEach(product => {
+        objectStore.add(product);
+    });
 }
 
 chrome.tabs.onUpdated.addListener(handleTabUpdate);
