@@ -1,23 +1,12 @@
-setBadgeRating(5.4);
-
-function setBadgeRating(rating, hasWarning) {
-    if (rating >= 7) {
-        chrome.browserAction.setBadgeBackgroundColor({ color: "#23d160" });
-    } else if (rating >= 4.5 && rating < 7) {
-        chrome.browserAction.setBadgeBackgroundColor({ color: "#ebbc00" });
-    } else {
-        chrome.browserAction.setBadgeBackgroundColor({ color: "#ff3860" });
+chrome.runtime.onMessage.addListener(function (msg, sender) {
+    console.log(sender.tab ?
+        "from a content script:" + sender.tab.url :
+        "from the extension"
+    );
+    if (msg.type === "success") {
+        alert(msg);
+        setBadgeRating(msg.result.score);
+    } else if (msg.type === "failure") {
+        alert(msg);
     }
-
-    if (!hasWarning) {
-        chrome.browserAction.setBadgeText({ text: rating.toString() });
-    } else {
-        chrome.browserAction.setBadgeText({ text: "!" });
-    }
-
-    try {
-        chrome.browserAction.setBadgeTextColor({ color: "#ffffff" });
-    } catch (e) {
-        console.log("Couldn't set badge text color (perhaps using Chrome?)");
-    }
-}
+});
