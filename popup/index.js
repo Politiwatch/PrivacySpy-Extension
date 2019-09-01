@@ -6,6 +6,7 @@ chrome.storage.local.get(['current_product'], function (data) {
         document.getElementById("service-domain").classList.add("hidden");
         document.getElementById("score").classList.add("hidden");
         document.getElementById("warnings").classList.add("black");
+        document.getElementById("warnings").classList.add("light-grey-background");
     }
     if (data.current_product.type === "empty") {
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
@@ -21,9 +22,11 @@ chrome.storage.local.get(['current_product'], function (data) {
         if (product.has_warnings_active) {
             document.getElementById("warnings").innerText = "There are active warnings published for " + product.name + ".";
             document.getElementById("warnings").classList.add("red");
+            document.getElementById("warnings").classList.add("light-red-background");
         } else {
             document.getElementById("warnings").innerText = "There are no active warnings published for " + product.name + ".";
             document.getElementById("warnings").classList.add("green");
+            document.getElementById("warnings").classList.add("light-green-background");
         }
         document.getElementById("score-value").innerText = product.score.toFixed(1).toString();
         document.getElementById("score").classList.add("block");

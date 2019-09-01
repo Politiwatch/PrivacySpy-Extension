@@ -65,9 +65,10 @@ hr {
 }
 
 #warnings {
-    font-weight: bold;
+    padding: 0.75rem 0rem;
     font-size: 1rem;
     margin: 0.5rem 0 0.75rem 0;
+    border-radius: 4px;
 }
 
 .red {
@@ -92,6 +93,22 @@ hr {
 
 .block {
     display: block;
+}
+
+.light-red-background {
+    background-color: #fff5f7;
+}
+
+.light-green-background {
+    background-color: #f6fef9;
+}
+
+.light-grey-background {
+    background-color: #F5F5F5;
+}
+
+.font-weight-bold {
+    font-weight: bold;
 }
 
 .button {
