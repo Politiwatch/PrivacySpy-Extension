@@ -91,7 +91,7 @@ function downloadDatabase() {
             var objectStore = db.transaction("products", "readwrite").objectStore("products");
             products.forEach(product => {
                 product.hostname.split(",").forEach(subname => {
-                    objectStore.delete(subname);
+                    objectStore.delete(subname.trim());
                     tempObj = clone(product);
                     tempObj.hostname = subname.trim();
                     objectStore.add(tempObj);
