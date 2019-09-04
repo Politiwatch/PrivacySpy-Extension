@@ -67,7 +67,7 @@ function updateDatabase() {
         if (data.database_last_updated === undefined) {
             downloadDatabase();
         } else {
-            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24 || true) {
+            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24) {
                 downloadDatabase();
             }
         }
