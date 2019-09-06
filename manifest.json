@@ -23,6 +23,11 @@
             "64": "icons/privacyspy-64.png"
         }
     },
+    "applications": {
+        "gecko": {
+            "id": "privacyspy@politiwatch.org"
+        }
+    },
     "background": {
         "scripts": [
             "background.js"
