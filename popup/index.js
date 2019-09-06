@@ -33,7 +33,6 @@ browser.storage.local.get(['current_product'], function (data) {
         return;
     }
     if (data.current_product.type !== "success") {
-        document.getElementById("see-breakdown").href = "https://privacyspy.org/";
         document.getElementById("see-breakdown").onclick = function () {
             chrome.tabs.create({
                 url: "https://privacyspy.org/"
@@ -83,7 +82,6 @@ browser.storage.local.get(['current_product'], function (data) {
         } else {
             document.getElementById("score").classList.add("red");
         }
-        document.getElementById("see-breakdown").href = "https://privacyspy.org/product/" + product.slug;
         document.getElementById("see-breakdown").onclick = function () {
             chrome.tabs.create({
                 url: "https://privacyspy.org/product/" + product.slug
