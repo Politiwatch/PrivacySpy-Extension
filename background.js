@@ -231,9 +231,11 @@ function setBadgeRating(rating, hasWarning) {
     }
 
     if (!hasWarning) {
-        chrome.browserAction.setBadgeText({
-            text: rating.toFixed(1).toString()
-        });
+        if(rating != null){
+            chrome.browserAction.setBadgeText({
+                text: rating.toFixed(1).toString()
+            });
+        }
     } else {
         chrome.browserAction.setBadgeText({
             text: "!"
