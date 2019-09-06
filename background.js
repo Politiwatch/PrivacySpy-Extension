@@ -8,7 +8,7 @@ var db;
 
 var cache = {};
 
-var request = window.indexedDB.open("ProductsDatabase", 3);
+var request = window.indexedDB.open("ProductsDatabase", 4);
 
 request.onerror = function (event) {
     console.log("Error loading database! Error: " + event.target.errorCode);
