@@ -27,6 +27,10 @@ request.onupgradeneeded = function (event) {
         console.log("Error loading database! Error: " + event.target);
     };
 
+    if (db.objectStoreNames.contains("products")) {
+        db.deleteObjectStore("products");
+    }
+
     var objectStore = db.createObjectStore("products", {
         keyPath: "hostname"
     });
