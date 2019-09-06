@@ -44,6 +44,7 @@ browser.storage.local.get(['current_product'], function (data) {
         document.getElementById("score").classList.add("hidden");
         document.getElementById("warnings").classList.add("black");
         document.getElementById("warnings").classList.add("light-grey-background");
+        document.getElementById("highlights").classList.add("hidden");
     }
     if (data.current_product.type === "empty") {
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
@@ -65,8 +66,16 @@ browser.storage.local.get(['current_product'], function (data) {
             document.getElementById("warnings").classList.add("green");
             document.getElementById("warnings").classList.add("light-green-background");
         }
-        document.getElementById("score-value").innerText = product.score.toFixed(1).toString();
-        document.getElementById("score").classList.add("block");
+        if (product.has_highlights) {
+            document.getElementById("highlights").classList.add("block");
+        } else {
+        }
+        if (product.score !== null) {
+            document.getElementById("score-value").innerText = product.score.toFixed(1).toString();
+            document.getElementById("score").classList.add("block");
+        } else {
+            document.getElementById("score").classList.add("hidden");
+        }
         if (product.score >= 7) {
             document.getElementById("score").classList.add("green");
         } else if (product.score >= 4 && product.score < 7) {

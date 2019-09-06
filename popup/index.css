@@ -1,13 +1,25 @@
-@import url('https://rsms.me/inter/inter.css');
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("Inter-Regular.woff2") format("woff2"),
+         url("Inter-Regular.woff") format("woff");
+}
+  
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("Inter-Bold.woff2") format("woff2"),
+         url("Inter-Bold.woff") format("woff");
+}  
 
 html, body {
     font-family: 'Inter', sans-serif;
     text-align: center;
     width: min-content;
-}
-
-@supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
 }
 
 hr {
@@ -61,14 +73,30 @@ hr {
 
 #service-domain {
     margin: 0;
+    font-size: 0.8rem;
     color: #b5b5b5;
 }
 
 #warnings {
-    padding: 0.75rem 0rem;
+    padding: 0.75rem 0.25rem;
     font-size: 1rem;
     margin: 0.5rem 0 0.75rem 0;
     border-radius: 4px;
+}
+
+#highlights {
+    padding: 0.75rem 0.25rem;
+    font-size: 1rem;
+    margin: 0.5rem 0 0.75rem 0;
+    border-radius: 4px;
+    color: #b603b6;
+    background-color: #fbf2fb;
+}
+
+#unrated {
+    color: #7a7a7a;
+    font-size: 3rem;
+    margin: 0.25em;
 }
 
 .red {
@@ -120,8 +148,8 @@ hr {
     cursor: pointer;
     justify-content: center;
     padding-bottom: calc(0.375em - 1px);
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     padding-top: calc(0.375em - 1px);
     text-align: center;
     white-space: nowrap;

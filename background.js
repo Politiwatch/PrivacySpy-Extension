@@ -8,7 +8,7 @@ var db;
 
 var cache = {};
 
-var request = window.indexedDB.open("ProductsDatabase", 2);
+var request = window.indexedDB.open("ProductsDatabase", 3);
 
 request.onerror = function (event) {
     console.log("Error loading database! Error: " + event.target.errorCode);
@@ -49,6 +49,9 @@ request.onupgradeneeded = function (event) {
     objectStore.createIndex("has_warnings_active", "has_warnings_active", {
         unique: false
     });
+    objectStore.createIndex("has_highlights", "has_highlights", {
+        unique: false
+    });
 
     objectStore.transaction.oncomplete = function (event) {
         updateDatabase();
@@ -63,11 +66,12 @@ function getDomainName(url) {
 }
 
 function updateDatabase() {
+    cache = {};
     browser.storage.local.get(['database_last_updated'], function (data) {
         if (data.database_last_updated === undefined) {
             downloadDatabase();
         } else {
-            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24) {
+            if (Date.now() > data.database_last_updated + 1000 * 60 * 60 * 24 || true) {
                 downloadDatabase();
             }
         }
@@ -80,15 +84,15 @@ function clone(obj) {
 
 function downloadDatabase() {
     console.log("Updating database...")
-    browser.storage.local.set({
-        'database_last_updated': Date.now()
-    });
-    fetch("https://privacyspy.org/api/retrieve_database")
+    fetch(BASE_URL + "/api/retrieve_database")
         .then(response => {
             return response.json();
         })
         .then(products => {
             var objectStore = db.transaction("products", "readwrite").objectStore("products");
+            browser.storage.local.set({
+                'database_last_updated': Date.now()
+            });
             products.forEach(product => {
                 product.hostname.split(",").forEach(subname => {
                     objectStore.delete(subname.trim());
@@ -116,16 +120,16 @@ function handleTabUpdate() {
         if (tabs[0] !== undefined) {
             var url = tabs[0].url;
             hostname = getDomainName(url);
+            chrome.browserAction.setBadgeText({
+                text: ""
+            });
             if (hostname) {
                 getHostnameInformation(hostname);
             } else {
                 browser.storage.local.set({
                     "current_product": {
                         type: "empty"
-                    }
-                });
-                chrome.browserAction.setBadgeText({
-                    text: ""
+                    },
                 });
             }
         }
@@ -187,7 +191,6 @@ function getHostnameInformation(hostname) {
                 }
             });
             setBadgeRating(event.target.result.score, event.target.result.has_warnings_active);
-            // chrome.browserAction.document.getElementById("service-name").innerText = event.target.result.name;
         } else {
             parts = hostname.split('.')
             if (parts.length == 1) {
@@ -237,5 +240,5 @@ function setBadgeRating(rating, hasWarning) {
         chrome.browserAction.setBadgeTextColor({
             color: "#ffffff"
         });
-    } catch (e) {}
+    } catch (e) { }
 }
