@@ -8,7 +8,11 @@ browser.storage.local.get(['database_last_updated'], function (data) {
         document.getElementById("warnings").classList.add("light-grey-background");
         document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
-        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+        document.getElementById("see-breakdown").onclick = function () {
+            chrome.tabs.create({
+                url: "https://privacyspy.org/"
+            });
+        };
         document.getElementById("score").classList.add("hidden");
     }
 })
@@ -19,14 +23,22 @@ browser.storage.local.get(['current_product'], function (data) {
         document.getElementById("warnings").classList.add("light-grey-background");
         document.getElementById("warnings").innerText = "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
         document.getElementById("see-breakdown").innerText = "Explore directory on privacyspy.org";
-        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); };
+        document.getElementById("see-breakdown").onclick = function () {
+            chrome.tabs.create({
+                url: "https://privacyspy.org/"
+            });
+        };
         document.getElementById("score").classList.add("hidden");
 
         return;
     }
     if (data.current_product.type !== "success") {
         document.getElementById("see-breakdown").href = "https://privacyspy.org/";
-        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/" }); }
+        document.getElementById("see-breakdown").onclick = function () {
+            chrome.tabs.create({
+                url: "https://privacyspy.org/"
+            });
+        }
         document.getElementById("service-name").classList.add("hidden");
         document.getElementById("service-domain").classList.add("hidden");
         document.getElementById("score").classList.add("hidden");
@@ -63,6 +75,10 @@ browser.storage.local.get(['current_product'], function (data) {
             document.getElementById("score").classList.add("red");
         }
         document.getElementById("see-breakdown").href = "https://privacyspy.org/product/" + product.slug;
-        document.getElementById("see-breakdown").onclick = function () { chrome.tabs.create({ url: "https://privacyspy.org/product/" + product.slug }); }
+        document.getElementById("see-breakdown").onclick = function () {
+            chrome.tabs.create({
+                url: "https://privacyspy.org/product/" + product.slug
+            });
+        }
     }
 });

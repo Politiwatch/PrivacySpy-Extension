@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PrivacySpy",
     "version": "1.0",
-    "description": "PrivacySpy provides brief yet comprehensive privacy policy summaries and ratings.",
+    "description": "PrivacySpy shows you how sites handle your personal data. See privacy warnings and policies rated on a 10-point scale.",
     "homepage_url": "https://privacyspy.org",
     "icons": {
         "48": "icons/privacyspy-48.png",
