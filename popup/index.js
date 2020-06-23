@@ -72,7 +72,6 @@ browser.storage.local.get(["current_product"], function (data) {
     }
     if (product.score >= 7) {
       document.getElementById("score").classList.add("green");
-      console.log("green!");
     } else if (product.score >= 4 && product.score < 7) {
       document.getElementById("score").classList.add("yellow");
     } else {

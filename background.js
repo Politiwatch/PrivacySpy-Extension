@@ -238,12 +238,12 @@ function getHostnameInformation(hostname) {
 function setBadgeRating(rating) {
   if (rating >= 7) {
     browser.browserAction.setBadgeBackgroundColor({
-      color: "#0366d6",
+      color: "#757575",
     });
     browser.browserAction.setBadgeTextColor({ color: "#010101" });
   } else if (rating >= 4) {
     browser.browserAction.setBadgeBackgroundColor({
-      color: "#0366d6",
+      color: "#757575",
     });
     browser.browserAction.setBadgeTextColor({ color: "#010101" });
   } else {
