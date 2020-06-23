@@ -240,17 +240,14 @@ function setBadgeRating(rating) {
     browser.browserAction.setBadgeBackgroundColor({
       color: "#757575",
     });
-    browser.browserAction.setBadgeTextColor({ color: "#010101" });
   } else if (rating >= 4) {
     browser.browserAction.setBadgeBackgroundColor({
       color: "#757575",
     });
-    browser.browserAction.setBadgeTextColor({ color: "#010101" });
   } else {
     browser.browserAction.setBadgeBackgroundColor({
       color: "#f03009",
     });
-    browser.browserAction.setBadgeTextColor({ color: "#fff" });
   }
 
   if (rating != null) {
