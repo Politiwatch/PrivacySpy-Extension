@@ -1,182 +1,230 @@
 @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("Inter-Regular.woff2") format("woff2"),
-         url("Inter-Regular.woff") format("woff");
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("Inter-Light.woff2") format("woff2"),
+    url("Inter-Light.woff") format("woff");
 }
-  
-@font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url("Inter-Bold.woff2") format("woff2"),
-         url("Inter-Bold.woff") format("woff");
-}  
 
-html, body {
-    font-family: 'Inter', sans-serif;
-    text-align: center;
-    width: min-content;
-    background-color: #fff;
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Inter-Regular.woff2") format("woff2"),
+    url("Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-Medium.woff2") format("woff2"),
+    url("Inter-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("Inter-SemiBold.woff2") format("woff2"),
+    url("Inter-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("Inter-Bold.woff2") format("woff2"),
+    url("Inter-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("Inter-ExtraBold.woff2") format("woff2"),
+    url("Inter-ExtraBold.woff") format("woff");
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  width: min-content;
+  background-color: #fff;
 }
 
 hr {
-    display: block;
-    color: #ffffff;
-    height: 2px;
-    background-color: whitesmoke;
-    border: 0;
+  display: block;
+  color: #ffffff;
+  height: 2px;
+  background-color: whitesmoke;
+  border: 0;
 }
 
 #popup-content {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 #header {
-    text-align: center;
-    border-radius: 4px;
+  text-align: center;
+  border-radius: 4px;
 }
 
 #privacyspy-logo {
-    width: 30px;
-    display: inline-block;
-    vertical-align: middle;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 40%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #privacyspy-text {
-    font-weight: bold;
-    display: inline-block;
-    vertical-align: middle;
-    color: #363636;
-    font-size: 1rem;
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: middle;
+  color: #010101;
+  font-size: 1.125rem;
 }
 
 #privacyspy-version {
-    color: #b5b5b5;
-    display: inline-block;
-    vertical-align: middle;
+  color: #b5b5b5;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #score {
-    font-size: 3rem;
-    margin: 0.25em;
+  font-size: 2.5rem;
+  margin: 0.25rem 0.25rem 1rem 0.25rem;
+  font-weight: 300;
 }
 
-#service-name {
-    font-weight: bold;
-    font-size: 1.6rem;
-    color: #363636;
-    margin: 0.5em 0 0.25em 0;
+#score-value {
+  font-weight: 600;
+}
+
+#product-name {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #010101;
+  margin: 0.5em 0 0.25em 0;
+}
+
+#product-description {
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: 300;
 }
 
 #service-domain {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #b5b5b5;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #b5b5b5;
 }
 
 #warnings {
-    padding: 0.75rem 0.25rem;
-    font-size: 1rem;
-    margin: 0.5rem 0 0.75rem 0;
-    border-radius: 4px;
+  padding: 0.75rem 0.25rem;
+  font-size: 1rem;
+  margin: 0.5rem 0 0.75rem 0;
+  border-radius: 4px;
 }
 
 #highlights {
-    padding: 0.75rem 0.25rem;
-    font-size: 1rem;
-    margin: 0.5rem 0 0.75rem 0;
-    border-radius: 4px;
-    color: #b603b6;
-    background-color: #fbf2fb;
+  padding: 0.75rem 0.25rem;
+  font-size: 1rem;
+  margin: 0.5rem 0 0.75rem 0;
+  border-radius: 4px;
+  color: #b603b6;
+  background-color: #fbf2fb;
 }
 
 #unrated {
-    color: #7a7a7a;
-    font-size: 3rem;
-    margin: 0.25em;
+  color: #7a7a7a;
+  font-size: 3rem;
+  margin: 0.25em;
 }
 
 .red {
-    color: #ff3860;
+  color: #f03009;
 }
 
 .yellow {
-    color: #ebbc00;
+  color: #f2c602;
 }
 
 .green {
-    color: #23d160;
+  color: #1fc142;
 }
 
 .black {
-    color: #363636;
+  color: #363636;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .block {
-    display: block;
+  display: block;
 }
 
 .light-red-background {
-    background-color: #fff5f7;
+  background-color: #fff5f7;
 }
 
 .light-green-background {
-    background-color: #f6fef9;
+  background-color: #f6fef9;
 }
 
 .light-grey-background {
-    background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .font-weight-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .button {
-    background-color: transparent;
-    border-color: #3273dc;
-    color: #3273dc;
-    border: solid;
-    border-width: 1px;
-    cursor: pointer;
-    justify-content: center;
-    padding-bottom: calc(0.375em - 1px);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: calc(0.375em - 1px);
-    text-align: center;
-    white-space: nowrap;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    align-items: center;
-    border-radius: 4px;
-    box-shadow: none;
-    display: inline-flex;
-    font-size: 0.9rem;
-    height: 2.25em;
-    justify-content: flex-start;
-    line-height: 1.5;
-    position: relative;
-    vertical-align: top;
-    text-decoration: none;
-    font-weight: 400;
+  background-color: transparent;
+  color: #0366d6;
+  font-weight: 500;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: calc(0.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 0.9rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  position: relative;
+  vertical-align: top;
+  text-decoration: none;
+  font-weight: 400;
 }
 
 .title {
-    font-weight: bold;
-    text-align: center;
-    font-size: 150%;
-    color: #363636;
+  font-weight: bold;
+  text-align: center;
+  font-size: 150%;
+  color: #363636;
 }
 
 .subtitle {
-    color: #4a4a4a;
+  color: #4a4a4a;
 }
