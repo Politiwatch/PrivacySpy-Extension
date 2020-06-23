@@ -1,4 +1,4 @@
-var BASE_URL = "https://beta.privacyspy.org";
+var BASE_URL = "https://privacyspy.org";
 
 if (typeof browser === "undefined") {
   var browser = chrome;
