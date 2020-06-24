@@ -272,10 +272,11 @@ if (
   });
 }
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener((e) => {
-  const colorScheme = e.matches ? "dark" : "light";
-  console.log("hello");
-  browser.browserAction.setIcon({
-    path: "icons/privacyspy-48-" + colorScheme + ".png",
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (e) => {
+    const colorScheme = e.matches ? "dark" : "light";
+    browser.browserAction.setIcon({
+      path: "icons/privacyspy-48-" + colorScheme + ".png",
+    });
   });
-});
