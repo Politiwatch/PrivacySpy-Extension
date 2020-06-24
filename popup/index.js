@@ -4,9 +4,8 @@ if (typeof browser === "undefined") {
 
 browser.storage.local.get(["database_last_updated"], function (data) {
   if (data.database_last_updated === undefined) {
-    document.getElementById("warnings").classList.add("black");
-    document.getElementById("warnings").classList.add("light-grey-background");
-    document.getElementById("warnings").innerText =
+    document.getElementById("product-description").classList.add("black");
+    document.getElementById("product-description").innerText =
       "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
     document.getElementById("see-breakdown").innerText =
       "Explore directory on privacyspy.org";
@@ -21,9 +20,8 @@ browser.storage.local.get(["database_last_updated"], function (data) {
 
 browser.storage.local.get(["current_product"], function (data) {
   if (data.current_product === undefined) {
-    document.getElementById("warnings").classList.add("black");
-    document.getElementById("warnings").classList.add("light-grey-background");
-    document.getElementById("warnings").innerText =
+    document.getElementById("product-description").classList.add("black");
+    document.getElementById("product-description").innerText =
       "PrivacySpy's database has not been downloaded yet. Please give it a moment or try restarting your browser.";
     document.getElementById("see-breakdown").innerText =
       "Explore directory on privacyspy.org";
