@@ -28,5 +28,5 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "web_accessible_resources": ["icons/privacyspy-96-light.png"]
+  "web_accessible_resources": ["icons/privacyspy-96-dark.png"]
 }
