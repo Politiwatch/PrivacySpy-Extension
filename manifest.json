@@ -8,7 +8,7 @@
     "48": "icons/privacyspy-48-dark.png",
     "96": "icons/privacyspy-96-dark.png"
   },
-  "permissions": ["activeTab", "tabs", "storage", "https://privacyspy.org/"],
+  "permissions": ["tabs", "storage"],
   "browser_action": {
     "default_title": "PrivacySpy",
     "default_popup": "popup/index.html",
@@ -26,5 +26,5 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "web_accessible_resources": ["icons/privacyspy-96-dark.png"]
+  "web_accessible_resources": ["icons/privacyspy-96-light.png"]
 }

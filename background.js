@@ -125,13 +125,9 @@ function handleTabUpdate() {
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    browser.browserAction.setIcon({
-      path: "icons/privacyspy-48-light.png",
-    });
+    setDarkTheme();
   } else {
-    browser.browserAction.setIcon({
-      path: "icons/privacyspy-48-dark.png",
-    });
+    setLightTheme();
   }
 
   chrome.tabs.query(
@@ -263,20 +259,14 @@ function setBadgeRating(rating) {
   } catch (e) {}
 }
 
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
+function setLightTheme() {
+  browser.browserAction.setIcon({
+    path: "icons/privacyspy-48-dark.png",
+  });
+}
+
+function setDarkTheme() {
   browser.browserAction.setIcon({
     path: "icons/privacyspy-48-light.png",
   });
 }
-
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", (e) => {
-    const colorScheme = e.matches ? "dark" : "light";
-    browser.browserAction.setIcon({
-      path: "icons/privacyspy-48-" + colorScheme + ".png",
-    });
-  });
